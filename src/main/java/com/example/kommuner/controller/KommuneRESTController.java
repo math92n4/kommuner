@@ -28,6 +28,16 @@ public class KommuneRESTController {
         return apiServiceGetKommuner.getKommuner();
     }
 
+    @GetMapping("/kommune/{kode}")
+    public ResponseEntity<Kommune> searchKommune(@PathVariable String kode) {
+        Kommune kommune = kommuneRepository.findByKode(kode);
+        if (kommune != null) {
+            return new ResponseEntity<>(kommune, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/addkommune")
     public ResponseEntity<Kommune> addKommune(@RequestBody Kommune kommune) {
         Kommune savedKommune = kommuneRepository.save(kommune);

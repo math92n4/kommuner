@@ -4,4 +4,5 @@ import com.example.kommuner.model.Kommune;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface KommuneRepository extends JpaRepository<Kommune,String> {
+    Kommune findByKode(String kode);
 }
