@@ -22,8 +22,12 @@ public class KommuneRESTController {
     @Autowired
     private KommuneRepository kommuneRepository;
 
-
     @GetMapping("/kommuner")
+    public List<Kommune> kommuner() {
+        return kommuneRepository.findAll();
+    }
+
+    @GetMapping("/getkommuner")
     public List<Kommune> getKommuner() {
         return apiServiceGetKommuner.getKommuner();
     }
